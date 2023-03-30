@@ -54,9 +54,9 @@ const EditEmployee = ({isEditEmployeeOpen, setIsEditEmployeeOpen, selectedAccoun
     try {
       const request = await axios.put('/api/account/editEmployee', sendingData)
       if(request.data.success) {
-        toast.success(request.data.message)
         setIsEditEmployeeOpen(false)
-        Router.reload()
+        await Router.reload()
+        toast.success(request.data.message)
       }
     } catch (error) {
       toast.error(error.response.data.message)

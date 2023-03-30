@@ -44,15 +44,18 @@ const AddEmployee = ({isAddEmployeeOpen, setIsAddEmployeeOpen}) => {
     }
 
     try {
+      // turn Loading On
       const request = await axios.post('/api/account/addEmployee', sendingData)
 
       if(request.data.success) {
+        // turn Loading off
         toast.success(request.data.message)
         setIsAddEmployeeOpen(false)
         Router.reload()
       }
 
     } catch (error) {
+      // turn loading off
       toast.error(error.response.data.message)
     }
   }
