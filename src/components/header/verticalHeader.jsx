@@ -3,7 +3,7 @@ import NextLink from 'next/link'
 import { useState } from 'react'
 import { motion, spring } from 'framer-motion'
 import { signOut, useSession } from 'next-auth/react'
-import { MdLastPage, MdFirstPage, MdSettings, MdOutlineHelp, MdClose, MdLogout, MdAccountCircle } from 'react-icons/md'
+import { MdLastPage, MdFirstPage, MdSettings, MdOutlineHelp, MdClose, MdLogout, MdAccountCircle, MdManageAccounts } from 'react-icons/md'
 
 const VerticalHeader = ({path}) => {
 
@@ -51,11 +51,11 @@ const VerticalHeader = ({path}) => {
       animate={{
         width: isNarrow ? '5em' : '10em',
       }}
-      className='bg-indigo-900 text-indigo-100 shadow-md sticky top-0 h-screen flex flex-col flex-nowrap p-4'
+      className='bg-indigo-900 text-indigo-100 shadow-md sticky top-0 h-screen flex flex-col flex-nowrap p-4 z-40'
     >
       {/* Logo */}
       <div className='flex justify-center py-4 border-b border-indigo-400'>
-        <a className='font-bold text-2xl' href='/'>{isNarrow ? 'L' : 'Logo'}</a>
+        <a className='font-bold text-2xl' href='/'>{isNarrow ? 'YK' : 'YK'}</a>
       </div>  
       {/* ToggleButton */}
       <motion.div
@@ -129,8 +129,16 @@ const VerticalHeader = ({path}) => {
               <NextLink 
                 href='/dashboard/account'
                 className='flex flex-row flex-nowrap items-center gap-2 px-3 py-2 hover:bg-indigo-800 hover:text-indigo-100 rounded-md'
+                onClick={() => setIsPopOpen(!isPopOpen)}
               >
                 <MdAccountCircle className='w-5 h-5'/>Account
+              </NextLink>
+              <NextLink 
+                href='/dashboard/manageAccounts'
+                className='flex flex-row flex-nowrap items-center gap-2 px-3 py-2 hover:bg-indigo-800 hover:text-indigo-100 rounded-md'
+                onClick={() => setIsPopOpen(!isPopOpen)}
+              >
+                <MdManageAccounts className='w-5 h-5'/>Manage Accts
               </NextLink>
               <button 
                 className='flex flex-row flex-nowrap items-center gap-2 px-3 py-2 hover:bg-indigo-800 hover:text-indigo-100 rounded-md'

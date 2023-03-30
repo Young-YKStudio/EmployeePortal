@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useSession } from 'next-auth/react'
+import LandingContainer from './landingParts/landingContainer'
 
 export default function Home() {
 
@@ -13,7 +13,7 @@ export default function Home() {
         <meta name="referrer" content="no-referrer" />
       </Head>
       <main>
-        <p>Landing</p>
+        <LandingContainer />
       </main>
     </>
   )

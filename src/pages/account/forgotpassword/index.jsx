@@ -4,6 +4,7 @@ import Router from 'next/router'
 import { MdCheckCircle } from 'react-icons/md'
 import { motion, AnimatePresence } from 'framer-motion'
 import { toast } from 'react-toastify'
+import BackgroundCircle from "@/components/background/backgroundCircle"
 
 const ForgotPassword = () => {
 
@@ -36,7 +37,8 @@ const ForgotPassword = () => {
   }
 
   return (
-    <section className='w-screen h-screen bg-indigo-100 flex items-center justify-center text-indigo-900'>
+    <section className='w-screen h-screen bg-transparent flex items-center justify-center text-indigo-900'>
+      <BackgroundCircle />
       { success ?
         <div className='w-96 p-8 rounded-lg bg-white/40 shadow-lg flex flex-col'>
 
@@ -88,7 +90,7 @@ const ForgotPassword = () => {
               <label htmlFor='email'>
                 Email
               </label>
-              <input type='email' value={email} name='email' className='rounded-md px-4 py-1 border-slate-100' onChange={formChangeHandler}/>
+              <input type='email' value={email} name='email' className='rounded-md px-4 py-1 border-slate-200' onChange={formChangeHandler}/>
             </div>
 
           </div>

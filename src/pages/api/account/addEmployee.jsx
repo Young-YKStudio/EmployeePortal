@@ -2,25 +2,26 @@ import dbConnect from "../../../../util/DBConnect";
 import User from '../../../../model/User'
 import bcrypt from 'bcrypt'
 
-const validateForm = async (username, email, password, passwordConfirm) => {
-  if (password !== passwordConfirm) {
+const validateForm = async (name, email, password, contact, title, role) => {
+
+  if(!name || !email || !password || !contact || title === '' || role === '') {
     return {
-      error: 'Passwords do no match',
-      message: 'Paswords do not match. Please check your password again'
+      error: 'Required information missing',
+      message: 'Required information is missing. Please fill out all forms.'
     }
   }
-
-  await dbConnect();
-
+  
+  await dbConnect()
+  
   const emailUser = await User.findOne({ email: email })
-
+  
   if(emailUser) {
     return {
       error: 'Email already exist',
-      message: 'Entered email already exists. Please try with different email address'
+      message: 'Entered email already exist. Please try with different email address'
     }
   }
-
+  
   if(password.length < 5) {
     return {
       error: 'Password too short',
@@ -31,17 +32,16 @@ const validateForm = async (username, email, password, passwordConfirm) => {
   return null
 }
 
-export default async function registerAccount(req, res) {
-
-  if(req.method !== 'POST') {
-    return res.status(303).json({ error: 'reqeust is not POST' })
+export default async function AddEmployee(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(303).json({ error: 'request is not POST'})
   }
 
-  const { name, email, password, passwordConfirm } = req.body
+  const { name, email, password, contact, title, role } = req.body
 
-  const errorMessage = await validateForm(name, email, password, passwordConfirm)
+  const errorMessage = await validateForm(name, email, password, contact, title, role)
 
-  if (!!errorMessage) {
+  if(!!errorMessage) {
     return res.status(400).json({
       success: false,
       error: errorMessage.error,
@@ -52,10 +52,14 @@ export default async function registerAccount(req, res) {
   const hashedPasword = await bcrypt.hash(password, 12)
 
   try {
+
     const userRegister = await new User({
       name: name,
       email: email,
-      password: hashedPasword
+      password: hashedPasword,
+      contact: contact,
+      title: title,
+      role: role
     })
 
     await userRegister.save()
@@ -63,7 +67,7 @@ export default async function registerAccount(req, res) {
     if(!!userRegister) {
       res.status(200).json({
         success: true,
-        message: 'User has been registered',
+        message: 'Employee has been added',
         user: userRegister
       })
     } else {
@@ -73,11 +77,11 @@ export default async function registerAccount(req, res) {
       })
     }
 
-  } catch (e) {
-    console.log(e)
+  } catch (error) {
+    console.log(error, 'error')
     res.status(400).json({
       success: false,
-      message: 'Error at registering account'
+      message: 'Error at registering account.'
     })
   }
 }

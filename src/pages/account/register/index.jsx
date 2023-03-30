@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { register } from '../../../../redux/cartSlice'
+import BackgroundCircle from "@/components/background/backgroundCircle"
 
 const Register = () => {
 
@@ -32,7 +33,8 @@ const Register = () => {
 
 
   return (
-    <section className='w-screen h-screen bg-indigo-100 flex items-center justify-center text-indigo-900'>
+    <section className='w-screen h-screen bg-transparent flex items-center justify-center text-indigo-900'>
+      <BackgroundCircle />
       <div className='w-96 p-8 rounded-lg bg-white/40 shadow-lg flex flex-col'>
         <div className='flex justify-center border-b border-indigo-300 pb-4 mb-4'>
           <h1 className='font-bold text-2xl'>Register</h1>
@@ -42,25 +44,25 @@ const Register = () => {
             <label htmlFor='name'>
               Name
             </label>
-            <input type='text' value={name} name='name' className='rounded-md px-4 py-1 border-slate-100' onChange={formChangeHandler}/>
+            <input type='text' value={name} name='name' className='rounded-md px-4 py-1 border-slate-200' onChange={formChangeHandler}/>
           </div>
           <div className='flex flex-col gap-1 mb-2'>
             <label htmlFor='email'>
               Email
             </label>
-            <input type='email' value={email} name='email' className='rounded-md px-4 py-1 border-slate-100' onChange={formChangeHandler}/>
+            <input type='email' value={email} name='email' className='rounded-md px-4 py-1 border-slate-200' onChange={formChangeHandler}/>
           </div>
           <div className='flex flex-col gap-1 mb-2'>
             <label htmlFor='password'>
               Password
             </label>
-            <input type='password' value={password} name='password' className='rounded-md px-4 py-1 border-slate-100' onChange={formChangeHandler}/>
+            <input type='password' value={password} name='password' className='rounded-md px-4 py-1 border-slate-200' onChange={formChangeHandler}/>
           </div>
           <div className='flex flex-col gap-1 mb-2'>
             <label htmlFor='passwordConfirm'>
               Confirm Password
             </label>
-            <input type='password' value={passwordConfirm} name='passwordConfirm' className='rounded-md px-4 py-1 border-slate-100' onChange={formChangeHandler}/>
+            <input type='password' value={passwordConfirm} name='passwordConfirm' className='rounded-md px-4 py-1 border-slate-200' onChange={formChangeHandler}/>
           </div>
         </div>
         <div className='flex flex-col items-center gap-4'>

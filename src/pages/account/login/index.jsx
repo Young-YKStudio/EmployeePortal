@@ -5,6 +5,7 @@ import Router from 'next/router';
 import { FcGoogle } from 'react-icons/fc'
 import { useDispatch } from 'react-redux';
 import { checkSession, login } from '../../../../redux/cartSlice';
+import BackgroundCircle from "@/components/background/backgroundCircle"
 
 const Login = ({providers}) => {
   
@@ -44,7 +45,7 @@ const Login = ({providers}) => {
   }
 
   const AuthLinks = (providers) => (
-    <div className='w-full flex flex-col items-center'>
+    <div className='w-full flex flex-col items-center border border-slate-200 rounded-md'>
       { providers && authButton(providers.providers.google)} 
     </div>
   )
@@ -66,7 +67,8 @@ const Login = ({providers}) => {
   
 
   return (
-    <div className='bg-indigo-100 w-screen h-screen flex justify-center items-center text-indigo-900'>
+    <div className='bg-transparent w-screen h-screen flex justify-center items-center text-indigo-900'>
+      <BackgroundCircle />
       <div className='w-96 p-8 rounded-lg bg-white/40 shadow-lg flex flex-col'>
         <div className='flex justify-center border-b border-indigo-300 pb-4 mb-4'>
           <h1 className='font-bold text-2xl'>Login</h1>
@@ -87,13 +89,13 @@ const Login = ({providers}) => {
             <label htmlFor='email'>
               Email
             </label>
-            <input type='email' value={email} name='email' className='rounded-md px-4 py-1 border-slate-100' onChange={formChangeHandler}/>
+            <input type='email' value={email} name='email' className='rounded-md px-4 py-1 border-slate-200' onChange={formChangeHandler}/>
           </div>
           <div className='flex flex-col gap-1 mb-2'>
             <label htmlFor='password'>
               Password
             </label>
-            <input type='password' value={password} name='password' className='rounded-md px-4 py-1 border-slate-100' onChange={formChangeHandler}/>
+            <input type='password' value={password} name='password' className='rounded-md px-4 py-1 border-slate-200' onChange={formChangeHandler}/>
           </div>
         </div>
         {/* buttons and links */}

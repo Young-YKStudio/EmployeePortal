@@ -3,6 +3,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import Router from 'next/router'
 import { toast } from 'react-toastify'
+import BackgroundCircle from "@/components/background/backgroundCircle"
 
 const PasswordReset = () => {
 
@@ -52,7 +53,8 @@ const PasswordReset = () => {
   }
 
   return (
-    <section className='w-screen h-screen bg-indigo-100 flex items-center justify-center text-indigo-900'>
+    <section className='w-screen h-screen bg-transparent flex items-center justify-center text-indigo-900'>
+      <BackgroundCircle />
       <div className='w-96 p-8 rounded-lg bg-white/40 shadow-lg flex flex-col'>
         <div className='flex justify-center border-b border-indigo-300 pb-4 mb-4'>
           <h1 className='font-bold text-2xl'>Password Reset</h1>

@@ -48,9 +48,9 @@ const HorizontalHeader = ({path}) => {
 
   return (
     <>
-      <nav className="fixed top-0 z-40 bg-indigo-900 w-full text-indigo-100 p-4 flex justify-between">
+      <nav className="fixed top-0 z-40 bg-transparent w-full text-indigo-900 p-4 flex justify-between">
         <div className='flex items-center w-full justify-center md:justify-start'>
-          <NextLink href='/' className='font-bold text-2xl'>Logo</NextLink>
+          <NextLink href='/' className='text-xl font-bold'>YK | Employee</NextLink>
         </div>
         {/* full menu */}
         <div className='hidden md:flex flex-row items-center gap-4'>
@@ -63,12 +63,12 @@ const HorizontalHeader = ({path}) => {
               {link.icon && <span className='mr-2'>{link.icon}</span>}{link.name}
             </NextLink>
           })}
-          <NextLink
+          {/* <NextLink
             href='/cart'
             className='flex items-center gap-2 px-4 py-2 rounded-md hover:bg-indigo-400/50'
           >
             <MdShoppingCart className='w-5 h-5'/> Cart {cartItems.length > 0 && <span className='absolute top-[0.85em] ml-[4.5em] px-[8px] py-[3px] bg-red-600/80 rounded-full text-white text-xs'>{cartItems.length}</span>}
-          </NextLink>
+          </NextLink> */}
           { session ? 
             <div className='flex flex-row flex-nowrap items-center gap-2 p-2 px-3 hover:bg-indigo-400/50 rounded-md hover:cursor-pointer'
               onClick={AccountClickHandler}
