@@ -28,7 +28,6 @@ const HorizontalHeader = ({path}) => {
 
   const ImageDistributor = (user) => {
     if(user.image) {
-      console.log(user.image, 'link?')
       return <div 
         style={{backgroundImage: `url("${user.image}")`}}
         className='w-7 h-7 rounded-full bg-center bg-cover'

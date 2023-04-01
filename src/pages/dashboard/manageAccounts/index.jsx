@@ -149,7 +149,7 @@ const ManageAccounts = (props) => {
 export default ManageAccounts;
 
 export async function getServerSideProps() {
-  const res = await axios.get('http://localhost:3000/api/account/getAllAccount')
+  const res = await axios.get(`${process.env.APP_URL}/api/account/getAllAccount`)
   let data = null
   if(res.data) {
     data = res.data.users

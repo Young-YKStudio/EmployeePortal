@@ -14,7 +14,6 @@ const LandingContainer = () => {
     console.log('clicked')
   }
 
-  console.log(pathname, 'at landing box')
   return (
     <div>
       <BackgroundCircle />

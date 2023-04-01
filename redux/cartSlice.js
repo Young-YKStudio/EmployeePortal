@@ -130,10 +130,16 @@ export const cartSlice = createSlice({
       state.isError = false
       state.message = ''
     },
+    setLoadingOn: (state) => {
+      state.isLoading = true
+    },
+    setLoadingOff: (state) => {
+      state.isLoading = false
+    }
   }
 })
 
-export const { addToCart, removeFromCart, cartReset, qtyIncrease, qtyDecrease, resetStatus, } = cartSlice.actions
+export const { addToCart, removeFromCart, cartReset, qtyIncrease, qtyDecrease, resetStatus, setLoadingOn, setLoadingOff } = cartSlice.actions
 
 export const selectItems = (state) => state.cart.cartItems
 

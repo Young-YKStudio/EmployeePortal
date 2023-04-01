@@ -43,7 +43,6 @@ export default async function DeleteEmployee(req, res) {
 
   try {
     const deleteUser = await User.findByIdAndDelete({ _id: id })
-    console.log(deleteUser, 'at api')
     if(!!deleteUser) {
       res.status(200).json({
         success: true,

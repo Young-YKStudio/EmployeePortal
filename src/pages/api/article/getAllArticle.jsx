@@ -1,28 +1,27 @@
 import dbConnect from "../../../../util/DBConnect";
-import User from '../../../../model/User'
+import Article from "../../../../model/Article";
+import Tag from "../../../../model/Tag";
 
-export default async function GetAllAccount(req, res) {
+export default async function GetAllArticle(req, res) {
   if (req.method !== 'GET') {
     return res.status(303).json({ error: 'request is not GET'})
   }
-
+  
+  await dbConnect()
   try {
-    await dbConnect()
-    const users = await User.find({})
-
-    if(users) {
+    const articles = await Article.find().sort({createdAt: -1}).populate({path: 'tags', model: Tag})
+    if(articles) {
       res.json({
         success: true,
-        users: users,
+        articles: articles,
       })
     } else {
       res.json({
         success: false,
-        message: 'user not found in DB'
+        message: 'articles not found in DB'
       })
     }
-
-  } catch (e) {
+  } catch (error) {
     res.json({
       success: false, 
       message: 'Error occured during connecting to DB'
