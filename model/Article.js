@@ -22,12 +22,12 @@ const articleSchema = new mongoose.Schema({
     }
   ],
   category: {
-    type: String,
-    require: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category'
   },
   subCategory: {
-    type: String,
-    require: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'SubCategory'
   }
 },{timestamps: true})
 

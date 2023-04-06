@@ -1,4 +1,4 @@
-import { MdSpaceDashboard, MdOutlineForwardToInbox, MdSell, MdAccountCircle } from "react-icons/md";
+import { MdOutlineList, MdOutlineForwardToInbox, MdSpaceDashboard, MdAccountCircle } from "react-icons/md";
 
 export const links = [
   // {
@@ -10,11 +10,11 @@ export const links = [
 
 export const dashboardLinks = [
   // examples below
-  // {
-  //   name: 'Dashboard',
-  //   href: '/dashboard',
-  //   icon: <MdSpaceDashboard className='w-5 h-5'/>
-  // },
+  {
+    name: 'All',
+    href: '/dashboard',
+    icon: <MdOutlineList className='w-5 h-5'/>
+  },
   // {
   //   name: 'Login',
   //   href: '/account/login',
