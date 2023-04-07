@@ -1,32 +1,29 @@
 import dbConnect from "../../../../util/DBConnect";
-import Article from "../../../../model/Article";
-import Tag from "../../../../model/Tag";
 import Category from "../../../../model/Category";
-import SubCategory from "../../../../model/SubCategory";
+import Article from '../../../../model/Article'
 
 const validateForm = async (id) => {
   if(!id) {
     return {
-      error: "ID is missing",
-      message: 'Cannot locate user id, contact service.'
+      error: 'ID is missing',
+      message: 'Cannot locate category, contact service.'
     }
   }
 
   await dbConnect()
 
   try {
-    const foundArticle = await Article.findOne({ _id: id }).populate({path: 'tags', model: Tag}).populate({path: 'category', model: Category}).populate({path: 'subCategory', model: SubCategory})
-    return foundArticle
+    const foundCategory = await Category.findOne({category: id}).populate({path: 'articles', model: Article})
+    return foundCategory
   } catch (error) {
     return {
-      error: 'Article not found',
-      message: 'Article is not found in database. Please contact service.'
+      error: 'Category not found',
+      message: 'Category is not found in database. Please contact service.'
     }
   }
-
 }
 
-export default async function GetArticle(req, res) {
+export default async function GetCategory(req, res) {
   if (req.method !== 'POST') {
     return res.status(303).json({ error: 'request is not POST' })
   }
@@ -44,8 +41,7 @@ export default async function GetArticle(req, res) {
   } else {
     return res.status(200).json({
       success: true,
-      article: response
+      category: response
     })
   }
-
 }

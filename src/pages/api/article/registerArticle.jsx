@@ -128,7 +128,7 @@ export default async function RegisterArticle(req, res) {
             })
             await tempCategory.subCategory.push(tempSubCategory._id)
             await tempCategory.articles.push(tempArticle._id)
-            await tempArticle.save()
+            await tempCategory.save()
             return tempCategory
           } catch (error) {
             return res.status(400).json({
@@ -163,7 +163,7 @@ export default async function RegisterArticle(req, res) {
     const EditSubCategory = async () => {
       try {
         tempSubCategory.category = tempCategory._id
-        tempSubCategory.save()
+        await tempSubCategory.save()
         return tempSubCategory
       } catch (error) {
         return res.status(400).json({
@@ -179,7 +179,7 @@ export default async function RegisterArticle(req, res) {
           await tempArticle.tags.push(tag._id)
         })
         tempArticle.category = tempCategory._id
-        tempArticle.subCategory = tempCategory._id
+        tempArticle.subCategory = tempSubCategory._id
         tempArticle.save()
         return tempArticle
       } catch(error) {
@@ -197,6 +197,7 @@ export default async function RegisterArticle(req, res) {
       await registerCategory()
       await EditSubCategory() 
       await EditArticle()
+
       return res.status(200).json({
         success: true,
         message: 'Article has been registered',

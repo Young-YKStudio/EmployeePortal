@@ -1,6 +1,8 @@
 import dbConnect from "../../../../util/DBConnect";
 import Article from "../../../../model/Article";
 import Tag from "../../../../model/Tag";
+import Category from "../../../../model/Category";
+import SubCategory from "../../../../model/SubCategory";
 
 export default async function GetAllArticle(req, res) {
   if (req.method !== 'GET') {
@@ -9,7 +11,7 @@ export default async function GetAllArticle(req, res) {
   
   await dbConnect()
   try {
-    const articles = await Article.find().sort({createdAt: -1}).populate({path: 'tags', model: Tag})
+    const articles = await Article.find().sort({createdAt: -1}).populate({path: 'tags', model: Tag}).populate({path: 'category', model: Category}).populate({path: 'subCategory', model: SubCategory})
     if(articles) {
       res.json({
         success: true,

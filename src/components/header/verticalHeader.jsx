@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, spring } from 'framer-motion'
 import { signOut, useSession } from 'next-auth/react'
 import { MdLastPage, MdFirstPage, MdSettings, MdOutlineHelp, MdClose, MdLogout, MdAccountCircle, MdManageAccounts, MdEditDocument } from 'react-icons/md'
+import CategoryLinks from './verticalHeaderParts/CategoryLinks'
 
 const VerticalHeader = ({path}) => {
 
@@ -37,9 +38,9 @@ const VerticalHeader = ({path}) => {
 
   const popStyles = (state) => {
     if (state) {
-      return 'fixed left-[6em] bottom-[1.5em] bg-indigo-100/70 rounded-md shadow-lg p-4 text-indigo-800 min-w-[150px] flex flex-col flex-nowrap gap-2'
+      return 'fixed left-[6em] bottom-[1.5em] bg-indigo-100 rounded-md shadow-lg p-4 text-indigo-800 min-w-[150px] flex flex-col flex-nowrap gap-2'
     } else {
-      return 'fixed left-[11em] bottom-[1.5em] bg-indigo-100/70 rounded-md shadow-lg p-4 text-indigo-800 min-w-[150px] flex flex-col flex-nowrap gap-2'
+      return 'fixed left-[11em] bottom-[1.5em] bg-indigo-100 rounded-md shadow-lg p-4 text-indigo-800 min-w-[150px] flex flex-col flex-nowrap gap-2'
     }
   }
 
@@ -67,7 +68,7 @@ const VerticalHeader = ({path}) => {
       </motion.div>
       <div className='mt-4 flex flex-col w-full h-full flex-nowrap justify-between'>
         {/* Links */}
-        <div className='flex flex-col flex-nowrap gap-4 w-full h-full'>
+        <div className='flex flex-col flex-nowrap gap-4 w-full'>
           {dashboardLinks && dashboardLinks.map((link, i) => {
             return <NextLink
               key={i}
@@ -78,6 +79,7 @@ const VerticalHeader = ({path}) => {
             </NextLink>
           })}
         </div>
+        <CategoryLinks path={path} isNarrow={isNarrow} />
         <div>
           <div className='flex flex-col flex-nowrap gap-2 border-t border-indigo-400 pt-4'>
             {/* Settings */}

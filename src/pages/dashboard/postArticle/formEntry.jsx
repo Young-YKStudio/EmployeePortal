@@ -22,11 +22,11 @@ const FormEntry = ({submitForm, setSubmitForm, tags, setTags, addedTags, setAdde
     }
   
     const requestToApi = async (data) => {
-      // dispatch(setLoadingOn())
+      dispatch(setLoadingOn())
       try {
         const request = await axios.post('/api/article/registerArticle', data)
         if(request.data.success) {
-          // dispatch(setLoadingOff())
+          dispatch(setLoadingOff())
           toast.success(request.data.message)
           setSubmitForm({
             title: '',
@@ -42,7 +42,6 @@ const FormEntry = ({submitForm, setSubmitForm, tags, setTags, addedTags, setAdde
           dispatch(setLoadingOff())
           toast.error(request.response.data.message)
         }
-        console.log(request, 'at app request')
       } catch (error) {
         dispatch(setLoadingOff())
         toast.error(error.response.data.message)

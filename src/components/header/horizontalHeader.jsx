@@ -62,12 +62,6 @@ const HorizontalHeader = ({path}) => {
               {link.icon && <span className='mr-2'>{link.icon}</span>}{link.name}
             </NextLink>
           })}
-          {/* <NextLink
-            href='/cart'
-            className='flex items-center gap-2 px-4 py-2 rounded-md hover:bg-indigo-400/50'
-          >
-            <MdShoppingCart className='w-5 h-5'/> Cart {cartItems.length > 0 && <span className='absolute top-[0.85em] ml-[4.5em] px-[8px] py-[3px] bg-red-600/80 rounded-full text-white text-xs'>{cartItems.length}</span>}
-          </NextLink> */}
           { session ? 
             <div className='flex flex-row flex-nowrap items-center gap-2 p-2 px-3 hover:bg-indigo-400/50 rounded-md hover:cursor-pointer'
               onClick={AccountClickHandler}
@@ -75,7 +69,6 @@ const HorizontalHeader = ({path}) => {
               {ImageDistributor(session.user)}
               <p className='text-md truncate'>{session.user.name}</p>
             </div>
-            // <RdxLogOutButton1 />
             :
             <NextLink 
               href='/account/login'
