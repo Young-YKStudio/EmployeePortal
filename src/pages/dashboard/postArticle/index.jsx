@@ -19,13 +19,7 @@ const PostArticle = () => {
 
   return (
     <section className='w-full px-8 h-screen'>
-      <div className='flex items-center justify-between my-3 gap-8'>
-        <form className='w-full flex gap-4'>
-          <input type='search' className='border border-indigo-900 px-4 py-1 rounded-lg w-full'
-            placeholder='Search article here...'
-          />
-          <button className='text-xs text-indigo-900 hover:text-indigo-400'>Search</button>
-        </form>
+      <div className='flex items-center justify-end my-3 gap-8'>
         <button onClick={() => setIsPreview(!isPreview)} className='bg-indigo-50 p-2 rounded-md border-indigo-900 border hover:text-white hover:bg-indigo-900'>{isPreview ? <MdOutlineCloseFullscreen /> : <MdPreview />}</button>
       </div>
       <div className='flex flex-col md:flex-row w-full gap-4 h-[90%]'>

@@ -55,7 +55,7 @@ const FormEntry = ({submitForm, setSubmitForm, tags, setTags, addedTags, setAdde
       <div className="absolute top-0 w-full flex justify-center pt-4">
         <p className="font-extrabold text-indigo-900 text-base">Article Entry</p>
       </div>
-      <label>Title</label>
+      <label className="mt-12 md:mt-0">Title</label>
       <input type='text' name='title' value={title} 
         className="border border-indigo-500 rounded-md w-full px-2 py-1 mb-4"
         onChange={(e) => changeHandler(e, setSubmitForm)}
