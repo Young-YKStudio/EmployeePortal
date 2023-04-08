@@ -9,6 +9,7 @@ export default async function GetCategories(req, res) {
 
   const GetAllCategory = async () => {
     try {
+      dbConnect();
       const allCategories = await Category.find().sort({'category': 1}).populate({path: 'subCategory', model: SubCategory})
       return allCategories
     } catch (error) {

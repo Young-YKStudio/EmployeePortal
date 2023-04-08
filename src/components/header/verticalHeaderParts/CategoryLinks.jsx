@@ -35,7 +35,8 @@ const CategoryLinks = ({path, isNarrow}) => {
           }
         } catch (error) {
           dispatch(setLoadingOff())
-          toast.error(error.response.data.message)
+          console.log(error)
+          // toast.error(error.response.message)
         }
       }
     }
@@ -46,7 +47,7 @@ const CategoryLinks = ({path, isNarrow}) => {
   }, [])
 
   return (
-    <section className="w-full h-full overflow-auto text-xs">
+    <section className="w-full h-full overflow-auto text-xs flex flex-col gap-0.5">
       {fetchedCategory && fetchedCategory.map((category) => {
         return <div
           key={category._id}

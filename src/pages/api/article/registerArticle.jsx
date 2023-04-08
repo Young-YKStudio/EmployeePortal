@@ -13,7 +13,7 @@ export default async function RegisterArticle(req, res) {
 
   if(title === '' || article === '' || category === '' || subCategory === '' || !title || !article || !category || !subCategory || tag.length === 0 ||!tag) {
     return res.status(400).json({
-      sucess: false,
+      success: false,
       message: 'Please fill out all forms'
     })
   }
