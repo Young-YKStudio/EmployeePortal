@@ -22,8 +22,6 @@ const Header = ({path}) => {
   },[session])
   
   useEffect(() => {
-    console.log(sessionStorage, path, 'at header')
-    
     if(path.startsWith('/dashboard') && !sessionStorage.userRole) {
       Router.push('/account/login')
     }

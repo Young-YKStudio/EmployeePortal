@@ -81,22 +81,22 @@ const VerticalHeader = ({path}) => {
         </div>
         <CategoryLinks path={path} isNarrow={isNarrow} />
         <div>
-          <div className='flex flex-col flex-nowrap gap-2 border-t border-indigo-400 pt-4'>
-            {/* Settings */}
+          {/* <div className='flex flex-col flex-nowrap gap-2 border-t border-indigo-400 pt-4'>
+
             <NextLink
               href='/dashboard/settings'
               className={isNarrow ? buttonStylesNarrow('/dashboard/settings') : buttonStyles('/dashboard/settings')}
             >
               <MdSettings className='w-5 h-5'/>{!isNarrow && 'Settings'}
             </NextLink>
-            {/* Help */}
+
             <NextLink
               href='/dashboard/help'
               className={isNarrow ? buttonStylesNarrow('/dashboard/help') : buttonStyles('/dashboard/help')}
             >
               <MdOutlineHelp className='w-5 h-5'/>{!isNarrow && 'Help'}
             </NextLink>
-          </div>
+          </div> */}
 
           {/* Account */}
           {session && <div 
@@ -106,10 +106,11 @@ const VerticalHeader = ({path}) => {
                 className={isNarrow ? 'flex flex-row flex-nowrap items-center justify-center gap-2 px-2 py-3 hover:bg-indigo-400/50 rounded-md' : 'flex flex-row flex-nowrap items-center gap-2 px-2 py-3 hover:bg-indigo-400/50 rounded-md hover:cursor-pointer'}
                 onClick={() => setIsPopOpen(!isPopOpen)}
               >
-                <div 
-                  style={{backgroundImage: `url("${session.user.image}")`}}
-                  className='w-5 h-5 rounded-full bg-center bg-cover'
-                />
+                <div
+                  className='w-7 h-7 rounded-full flex justify-center items-center bg-indigo-400 text-white text-md'
+                >
+                  {session.user.name.substring(0, 1).toUpperCase()}
+                </div>
                 {/* <p>{session.user.image}</p> */}
                 {!isNarrow && <p className='text-xs truncate'>{session.user.name}</p>}
               </div>
@@ -128,13 +129,13 @@ const VerticalHeader = ({path}) => {
               >
                 <MdClose />
               </button>
-              <NextLink 
+              {/* <NextLink 
                 href='/dashboard/account'
                 className='flex flex-row flex-nowrap items-center gap-2 px-3 py-2 hover:bg-indigo-800 hover:text-indigo-100 rounded-md'
                 onClick={() => setIsPopOpen(!isPopOpen)}
               >
                 <MdAccountCircle className='w-5 h-5'/>Account
-              </NextLink>
+              </NextLink> */}
               <NextLink 
                 href='/dashboard/manageAccounts'
                 className='flex flex-row flex-nowrap items-center gap-2 px-3 py-2 hover:bg-indigo-800 hover:text-indigo-100 rounded-md'

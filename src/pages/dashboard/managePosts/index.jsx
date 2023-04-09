@@ -26,7 +26,7 @@ const ManagePosts = (props) => {
       if(request.data.success) {
         dispatch(setLoadingOff())
         toast.success(request.data.message)
-        Router.reload()
+        Router.push('/dashboard/managePosts')
       }
     } catch (error) {
       dispatch(setLoadingOff())
@@ -96,10 +96,10 @@ const ManagePosts = (props) => {
                         <td
                           className={classNames(
                             index !== props.posts.length - 1 ? 'border-b border-gray-200' : '',
-                            'whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8'
+                            'whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-indigo-900 sm:pl-6 lg:pl-8'
                           )}
                         >
-                          {article.title}
+                          <NextLink href={`/dashboard/articles/${article._id}`} className='font-bold hover:text-indigo-400'>{article.title}</NextLink>
                         </td>
                         <td
                           className={classNames(

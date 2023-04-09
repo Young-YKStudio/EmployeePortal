@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { setLoadingOn, setLoadingOff } from '../../../../redux/cartSlice'
 import { toast } from "react-toastify"
+import Router from 'next/router'
 
 const FormEntry = ({submitForm, setSubmitForm, tags, setTags, addedTags, setAddedTags}) => {
 
@@ -28,16 +29,7 @@ const FormEntry = ({submitForm, setSubmitForm, tags, setTags, addedTags, setAdde
         if(request.data.success) {
           dispatch(setLoadingOff())
           toast.success(request.data.message)
-          setSubmitForm({
-            title: '',
-            article: '',
-            category: '',
-            subCategory: '',
-          })
-          setTags({
-            tag: '',
-          })
-          setAddedTags([])
+          Router.push('/dashboard/managePosts')
         } else {
           dispatch(setLoadingOff())
           toast.error(request.response.data.message)

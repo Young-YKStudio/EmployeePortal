@@ -32,7 +32,6 @@ const LinkModule = ({category, isNarrow}) => {
 
   return (
     <div>
-      {revisedCategory && console.log(revisedCategory)}
       {revisedCategory && 
         <div>
           <div 

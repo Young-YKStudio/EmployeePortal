@@ -43,7 +43,7 @@ const Tags = (props) => {
   },[props])
 
   return (
-    <section className="p-8 bg-indigo-50 w-full">
+    <section className="p-8 pl-20 bg-indigo-50 w-full">
       <p className='text-3xl font-bold text-indigo-900 mb-4'>Tag: {fetchedTags ? fetchedTags.tag : 'Loading...'}</p>
       <div
         className='flex flex-col gap-4 lg:grid lg:grid-cols-2'
