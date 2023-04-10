@@ -10,9 +10,9 @@ const checkSession = async (userData) => {
       name: foundaccount.data.user.name,
       role: foundaccount.data.user.role,
     }
-    await sessionStorage.setItem('userId', savingData.id)
-    await sessionStorage.setItem('userName', savingData.name)
-    await sessionStorage.setItem('userRole', savingData.role)
+    await localStorage.setItem('userId', savingData.id)
+    await localStorage.setItem('userName', savingData.name)
+    await localStorage.setItem('userRole', savingData.role)
   }
   return foundaccount.data
 }
@@ -26,10 +26,10 @@ const checkSessionAgain = async (userData) => {
       role: foundaccount.data.user.role,
       image: foundaccount.data.user.image,
     }
-    await sessionStorage.setItem('userId', savingData.id)
-    await sessionStorage.setItem('userName', savingData.name)
-    await sessionStorage.setItem('userRole', savingData.role)
-    await sessionStorage.setItem('userImage', savingData.image)
+    await localStorage.setItem('userId', savingData.id)
+    await localStorage.setItem('userName', savingData.name)
+    await localStorage.setItem('userRole', savingData.role)
+    await localStorage.setItem('userImage', savingData.image)
   }
 
   return foundaccount.data
@@ -39,7 +39,7 @@ const checkSessionAgain = async (userData) => {
 // Logout
 const logout = async () => {
   await signOut()
-  await sessionStorage.clear()
+  await localStorage.clear()
 }
 
 // Register
@@ -52,8 +52,8 @@ const register = async (userData) => {
       password: userData.password,
       callbackUrl: `${window.location.origin}`
     })
-    await sessionStorage.setItem('user', request.data.user)
-    if(sessionStorage.user) {
+    await localStorage.setItem('user', request.data.user)
+    if(localStorage.user) {
       redirect('/')
 
     }

@@ -50,7 +50,8 @@ const Login = ({providers}) => {
     </div>
   )
 
-  const submitHandler = async () => {
+  const submitHandler = async (e) => {
+    e.preventDefault()
     const userData = {
       email, password
     }
@@ -84,7 +85,8 @@ const Login = ({providers}) => {
           <div className='w-full border-b border-indigo-300'/>
         </div>
         {/* Form Input */}
-        <div className='flex flex-col gap-1 text-sm mb-2' >
+        <form className='flex flex-col gap-1 text-sm mb-2' onSubmit={submitHandler
+        }>
           <div className='flex flex-col gap-1 mb-2'>
             <label htmlFor='email'>
               Email
@@ -97,10 +99,10 @@ const Login = ({providers}) => {
             </label>
             <input type='password' value={password} name='password' className='rounded-md px-4 py-1 border-slate-200' onChange={formChangeHandler}/>
           </div>
-        </div>
+          <button type='submit' className='bg-indigo-500 text-white rounded-md hover:bg-indigo-700 py-2 w-full mb-2'>Login</button>
+        </form>
         {/* buttons and links */}
         <div className='flex flex-col items-center gap-2 mt-2'>
-          <button className='bg-indigo-500 text-white rounded-md hover:bg-indigo-700 py-2 w-full mb-2' onClick={submitHandler}>Login</button>
           <p className='text-xs'>Don't have an account? <button onClick={() => redirectToRegister()} className='font-bold hover:text-indigo-500'>Register</button></p>
           <p className='text-xs'>Forgot password?<a href='/account/forgotpassword' className='hover:text-indigo-500 font-bold'> Password Reset</a></p>
         </div>

@@ -16,25 +16,23 @@ const Header = ({path}) => {
       if(!!session.user.image) {
         dispatch(checkSessionAgain(session.user))
       }
-    } else {
-      sessionStorage.clear()
     }
   },[session])
   
   useEffect(() => {
-    if(path.startsWith('/dashboard') && !sessionStorage.userRole) {
+    if(path.startsWith('/dashboard') && !localStorage.userRole) {
       Router.push('/account/login')
     }
 
-    if(path.startsWith('/dashboard') && sessionStorage.userRole === 'user') {
+    if(path.startsWith('/dashboard') && localStorage.userRole === 'user') {
       Router.push('/notAllowed')
     }
 
-    if(path === '/dashboard/manageAccounts' && sessionStorage.userRole !== 'admin') {
+    if(path === '/dashboard/manageAccounts' && localStorage.userRole !== 'admin') {
       Router.push('/dashboard')
     } 
 
-    if(path === '/dashboard/managePosts' && sessionStorage.userRole !== 'admin') {
+    if(path === '/dashboard/managePosts' && localStorage.userRole !== 'admin') {
       Router.push('/dashboard')
     } 
     

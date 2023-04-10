@@ -5,6 +5,7 @@ import { motion, spring } from 'framer-motion'
 import { signOut, useSession } from 'next-auth/react'
 import { MdLastPage, MdFirstPage, MdSettings, MdOutlineHelp, MdClose, MdLogout, MdAccountCircle, MdManageAccounts, MdEditDocument, MdOutlineNoteAlt } from 'react-icons/md'
 import CategoryLinks from './verticalHeaderParts/CategoryLinks'
+import { RdxLogOutButton1 } from '../../../redux/auth/logOutButtons'
 
 const VerticalHeader = ({path}) => {
 
@@ -150,12 +151,7 @@ const VerticalHeader = ({path}) => {
               >
                 <MdOutlineNoteAlt className='w-5 h-5'/>Manage Posts
               </NextLink>
-              <button 
-                className='flex flex-row flex-nowrap items-center gap-2 px-3 py-2 hover:bg-indigo-800 hover:text-indigo-100 rounded-md'
-                onClick={() => signOut()}
-              >
-                <MdLogout className='w-5 h-5 '/>Logout
-              </button>
+              <RdxLogOutButton1 />
             </motion.div>
           }
 

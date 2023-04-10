@@ -32,7 +32,7 @@ export default async function GetCategory(req, res) {
 
   const response = await validateForm(id)
 
-  if(!!response.error) {
+  if(!response) {
     return res.status(400).json({
       success: false,
       error: response.error,
